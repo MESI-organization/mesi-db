@@ -1,1 +1,3 @@
-# mesi-db
+# MESI database
+
+*Manipulation Experiments Synthesis Initiative*
