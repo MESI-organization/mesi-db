@@ -2,16 +2,11 @@
 
 *Manipulation Experiments Synthesis Initiative*
 
-XXX add more info here
+terrestrial global change experiment database
 
-## steps still to do
-- metadata table
-- combined reference list (can be with specification of databases)
-- R script for wide <--> long format
-- few 100s of lines: site identification
-- license file to repo
-
-## to extent possible before DB paper submission
-- further standardization of units
-- further standardization of response variable names
-- check and add sampling years
+## files included
+- mesi_main.csv: main table, with experimental global change effect on measured response variable specified per row, and ancillary site, study & experiment information
+- mesi_soil.csv: ancillary soil data per study
+- mesi_bibliography.csv: full citation of references in main and soil tables
+- mesi_metadata.csv
+- mesi_response_variable_abbreviations.csv: explanation of abbreviations used for response variables in mesi_main.csv
