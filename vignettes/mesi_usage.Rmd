@@ -1,0 +1,63 @@
+---
+title: "MESI usage"
+author: "Beni Stocker"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    toc_depth: 2
+---
+
+```{r, warning=FALSE}
+library(tidyverse)   # for working with ease
+```
+
+This example shows how to read the MESI data file and subset the data based on your interest for the intended data analysis. In this example, we're going to perform the subsetting to:
+
+- Use data from CO2 experiments (with only CO2 being manipulated)
+- Use data only from field experiments
+- Use data for the response variable aboveground biomass (`agb`) 
+- Use data only from experiments from which observations were taken for at least three years.
+
+## Read data
+
+```{r}
+df <- read_csv("~/mesi-db/data/mesi_main.csv")
+```
+
+**Issues**
+
+- Is information on fumigation type available in some way? I'd like to select data from FACE and open-top chambers.
+- Some experiments don't have a name, referred to by coordinates.
+
+## Data subsetting
+
+Determine experiments that provide at least three years of data.
+```{r}
+use_exp <- df %>% 
+  filter(!is.na(sampling_year)) %>% 
+  group_by(exp) %>% 
+  summarise(nyears = max(sampling_year)) %>% 
+  filter(nyears >= 3) %>% 
+  pull(exp)
+```
+
+Subset the data.
+```{r}
+df <- df %>% 
+  
+  ## Use only data from experiments determined above
+  filter(exp %in% use_exp) %>% 
+  
+  ## Use only data for the response variable 'aboveground biomass'
+  filter(response == "agb") %>%
+  
+  ## CO2-only manipulation (no other factors manipulated, no crossed manipulation)
+  filter(treatment == "c") %>% 
+  
+  ## only experiments conducted in the field
+  filter(experiment_type == "field")
+```
+
+
