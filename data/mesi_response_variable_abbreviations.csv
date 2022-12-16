@@ -36,7 +36,7 @@ anpp_grain,grain_yield
 anpp_group,aboveground_net_primary_production_of_plant_species_or_functional_group
 anpp_harvest_index,aboveground_harvest_index
 anpp_leaf,leaf_production
-anpp_woody,woody_tissue_biomass_production
+anpp_woody,woody_tissue_aboveground_biomass_production
 asat,light-saturated_rate_of_co2_assimilation
 ba,basal_area
 bai,basal_area_increment
@@ -196,8 +196,6 @@ soil_p,soil_phosphorus
 soil_p_min_layer,mineral_soil_phosphorus
 soil_p_supply_rate,soil_phosphorus_supply_rate
 soil_pbray,available_soil_phosphorus_bray_method
-soil_ph,soil_ph
-soil_ph_min_layer,mineral_soil_ph
 soil_phkcl,soil_ph_in_potassium_chloride_solution
 soil_phw,soil_ph_in_water
 soil_phw_min_layer,mineral_soil_ph_in_water
@@ -236,7 +234,7 @@ soil_total_p_org_layer,organic_soil_total_phosphorus
 som,soil_organic_matter
 som_cn,soil_organic_matter_carbon_to_nitrogen_ratio
 som_n,soil_organic_matter_nitrogen
-stem_biomass,stem_biomass
+stem_biomass_growth,stem_biomass_growth
 stem_n,stem_nitrogen
 stem_radial_growth,stem_radial_growth
 swc,soil_water_content
