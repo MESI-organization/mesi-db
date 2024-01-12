@@ -45,7 +45,7 @@ MainTable_Long = MT_by_manipulation %>%
            ecosystem_type,	vegetation_type,	experiment_type,	community_type,	dominant_species,	
            growth_form,	age,	disturbance_type,	start_year,	duration,	treatment_duration,	
            fumigation_type,	start_treatment,	end_treatment,	sampling_year,	sampling_depth,	
-           aggregation_level,	x_units,	sampling_date,	comment,	response_value,	sd_value,	
+           aggregation_level,	x_units,	sampling_date,	response_value,	sd_value,	
            se_value,	rep_value,	c_magnitude,	n_magnitude,	p_magnitude,	k_magnitude,	
            i_magnitude,	s_magnitude,	treatment,	w_t1,	d_t,	d_t2,	i_t2,	w_t2,	w_t3, .keep_all = TRUE)
 
