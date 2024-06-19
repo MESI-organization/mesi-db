@@ -1,0 +1,54 @@
+---
+title: "Cite original publications"
+author: "Beni Stocker"
+date: "2024-06-19"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Read and subset citation data and convert column `citation` to a bibtex citation key (by adding a '@').
+```{r}
+library(tidyverse)
+library(here)
+library(xtable)
+
+source(here("R/create_table_latex.R"))
+
+df <- read_csv(here("data/mesi_bibliography.csv")) |> 
+  slice(1:3) |> 
+  select(exp, citation) |> 
+
+  # make it a bibtex citation key - unsolved problem: how to write a single backslash???
+  mutate(citation = paste0("\\", "cite{", citation, "}"))
+```
+
+The data frame created above can now be written as a Latex table as Latex source code that can be placed in a Latex document.
+```{r}
+# create latex file containing just the table in latex source code -> table.tex
+create_table_latex(df, caption = "Caption text", filn = here("latex/table.tex") )
+```
+
+This creates a file that looks like this:
+```
+% latex table generated in R 4.4.0 by xtable 1.8-4 package
+% Wed Jun 19 14:15:16 2024
+\begin{table}[ht]
+\centering
+\begin{tabular}{ll}
+  \hline
+exp & citation \\ 
+  \hline
+helsinki\_d & $\backslash$cite\{aaltonen\_et\_al\_2016\} \\ 
+  62.88\_27.67\_f & $\backslash$cite\{aarnio\_and\_martikainen\_1995\} \\ 
+  riceface\_shizukuishi\_l\_2007\_c & $\backslash$cite\{adachi\_et\_al\_2014\} \\ 
+  \end{tabular}
+\caption{Caption text} 
+\end{table}
+```
+
+TODO: you see that here there are problems with too many backslashes created and others that need to be there written as `$\backslash$`. Make this an actual latex table.
+
+Next, place the table source into a Latex source file by `\include{table.tex}`. As an example, see file `latex/example.tex`. Compile that file for example from the terminal with `pdflatex example.tex` and `bibtex example`. Make sure that you change into the subdirectory `latex/` before executing the compilation commands. Then open the file `example.pdf`. 
