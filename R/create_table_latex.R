@@ -14,6 +14,6 @@ create_table_latex <- function( df, caption, filn = "", ... ){
 	  ... 
 	  )
 	
-  return(NULL)
+  return(filn)
 }
 
