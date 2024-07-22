@@ -1,38 +1,48 @@
-\documentclass{report}
+\documentclass{article}
 
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[english]{babel}
 
-% References - xxx add style file to repo
-\bibliographystyle{copernicus}
+% Set page size and margins
+% Replace `letterpaper' with `a4paper' for UK/EU standard size
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
 
+% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+
+\title{Your Paper}
+\author{You}
 
 \begin{document}
-\pagestyle{headings}
-
-% Document must include
-% ---------------------
-% 
-
-%% Title
-\title{Citations of experiments used in MESI}
-\author{Your Name} 
-
 \maketitle
+
+\begin{abstract}
+Your abstract.
+\end{abstract}
+
+\section{Introduction}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Peer-reviewed publications}
 
-Pre-prints of now published articles are not included
+This is how the table will look like
 
-% \include{table.tex}
+\input{output.tex}
 
-This can be in a table:
 
-\cite{bachofen24newphyt}
+this could be other citations in text
 
+\cite{zak_et_al_1993}
+
+\cite{ziska_et_al_2004} 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \addcontentsline{toc}{section}{References}
-\bibliography{mesi.bib}
+\bibliographystyle{apalike}
+\bibliography{mesi_tesbib}{}
 
 \end{document}
