@@ -61,6 +61,6 @@ It may be necessary to manually correct other special characters manually in `la
 
 ## Create table as a PDF
 
-Once it's ready to be included (Latex-readable), it can be placed in a Latex document (`latex/example.tex`) using `\include{latex/table_clean}` in the tex source.
+Once it's ready to be included (Latex-readable), it can be placed in a Latex document (`latex/example.tex`) using `\input{table_clean.tex}` in the tex source.
 
 Compile the `.tex` file for example from the terminal with `pdflatex example.tex` and `bibtex example`. Make sure that you change into the subdirectory `latex/` before executing the compilation commands. The experiments reference table with references and a bibliography at the bottom of the document has now been included in the PDF `latex/example.pdf`.
