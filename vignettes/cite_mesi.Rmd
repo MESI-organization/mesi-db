@@ -18,6 +18,7 @@ Load libraries and R source code for this repository's functions.
 library(tidyverse)
 library(here)
 library(xtable)
+library(bib2df)
 
 source(here("R/create_table_latex.R"))
 source(here("R/process_cite_lines.R"))
@@ -27,8 +28,19 @@ source(here("R/process_cite_lines.R"))
 
 Read and subset citation data. The list should contain the experiments and citations used in your analysis.
 ```{r}
-df <- read_csv(here("data/mesi_bibliography.csv"), show_col_types = FALSE) |> 
-  slice(1:10) |> 
+# Read mesi db 
+mesi_bibliography <- read_csv(here("data/mesi_bibliography.csv"), show_col_types = FALSE) 
+
+# Read the BibTeX file
+bib_file <- bib2df(here("latex/mesi.bib"))
+
+# Extract citation keys from the BibTeX file
+    citation_keys <- bib_file$BIBTEXKEY
+
+# Filter the mesi database for experiments that are included in the bibtex file and select a random sample
+df <- mesi_bibliography |> 
+  filter(citation %in% citation_keys) |>
+  sample_n(20)|> 
   select(exp, citation) |> 
   arrange(citation) |>
   mutate(citation = paste0('\\', "cite{", citation, "}"))
